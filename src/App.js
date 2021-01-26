@@ -33,7 +33,6 @@ class BooksApp extends React.Component {
 
 
   reload = () => {
-
     BooksAPI.getAll().then(result => {
       this.setState({
         books: {
@@ -53,7 +52,7 @@ class BooksApp extends React.Component {
 
             <Switch>
               <Route path="/search">
-                <SearchScreen onBookAdded={this.onBookAdded}></SearchScreen>
+                <SearchScreen books={this.state.books.collection} onBookAdded={this.onBookAdded}></SearchScreen>
               </Route>
 
               <Route exact path="/">
