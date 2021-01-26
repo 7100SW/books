@@ -33,7 +33,7 @@ export default class SearchScreen extends Component {
 
                 } else {
                     this.setState({
-                        books: []
+                        books: null
                     });
                 }
             });
@@ -57,9 +57,17 @@ export default class SearchScreen extends Component {
                         <input type="text" placeholder="Search by title or author" onChange={this.onSearchChanges}/>
                     </div>
                 </div>
-                <div className="search-books-results">
-                    <BookShelfBooks books={this.state.books} onBookUpdate={(book) => this.onBookUpdate(book)}/>
-                </div>
+
+                {
+                    this.state.books === null ?
+                        <div className="search-books-results">
+                            No books found
+                        </div>
+                    :
+                        <div className="search-books-results">
+                            <BookShelfBooks books={this.state.books} onBookUpdate={(book) => this.onBookUpdate(book)}/>
+                        </div>
+                }
             </div>
         );
     }
