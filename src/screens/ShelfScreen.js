@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 export default class ShelfScreen extends Component {
     render() {
 
-        const {currents, wants, reads } = this.props.books;
+        const {collection } = this.props.books;
         const {onBookUpdate} = this.props;
 
         return(
@@ -15,9 +15,9 @@ export default class ShelfScreen extends Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf  name={'Currently Reading'} books={currents} onBookUpdate={onBookUpdate}/>
-                        <BookShelf  name={'Want to Read Next'} books={wants} onBookUpdate={onBookUpdate}/>
-                        <BookShelf  name={'Reads'} books={reads} onBookUpdate={onBookUpdate}/>
+                        <BookShelf  name={'Currently Reading'} books={collection} filter={'currentlyReading'} onBookUpdate={onBookUpdate}/>
+                        <BookShelf  name={'Want to Read Next'} books={collection} filter={'wantToRead'} onBookUpdate={onBookUpdate}/>
+                        <BookShelf  name={'Reads'} books={collection} filter={'read'} onBookUpdate={onBookUpdate}/>
                     </div>
                 </div>
 

@@ -4,12 +4,12 @@ import BookShelfBooks from "./BookShelfBooks";
 
 export default class BookShelf extends Component {
     render() {
-        const {name, books, onBookUpdate} = this.props;
+        const {name, books, filter, onBookUpdate} = this.props;
 
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{name}</h2>
-                <BookShelfBooks books={books} onBookUpdate={onBookUpdate}/>
+                <BookShelfBooks books={books.filter(b => b.shelf === filter)} onBookUpdate={onBookUpdate}/>
             </div>
         );
     }
@@ -17,6 +17,7 @@ export default class BookShelf extends Component {
 
 BookShelf.propTypes = {
     name: PropTypes.string.isRequired,
+    filter: PropTypes.string.isRequired,
     books: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
         shelf: PropTypes.string,
