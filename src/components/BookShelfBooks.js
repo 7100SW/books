@@ -10,17 +10,20 @@ export default class BookShelfBooks extends Component {
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     {
-                    books.map(book => (
-                        <li key={book.id}>
-                            <BookComponent onBookUpdate={onBookUpdate} book={{
-                                id: book.id,
-                                name: book.name,
-                                authors: book.authors,
-                                coverUrl: book.imageLinks.smallThumbnail,
-                                shelf: book.shelf
-                            }}/>
-                        </li>
-                    ))
+                    books.map(book => {
+                        const url = book.imageLinks ? book.imageLinks.smallThumbnail : '';
+
+                        return (
+                            <li key={book.id}>
+                                <BookComponent onBookUpdate={onBookUpdate} book={{
+                                    id: book.id,
+                                    name: book.name,
+                                    authors: book.authors,
+                                    coverUrl: url,
+                                    shelf: book.shelf
+                                }}/>
+                            </li>
+                    )})
                     }
                 </ol>
             </div>
