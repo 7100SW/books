@@ -15,9 +15,7 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then(() => {
-      this.reload();
-    });
+    this.reload();
   }
 
   onBookUpdate = (book) => {
@@ -32,13 +30,12 @@ class BooksApp extends React.Component {
   };
 
 
-  reload = () => {
-    BooksAPI.getAll().then(result => {
-      this.setState({
-        books: {
-          collection: [...result]
-        }
-      });
+  reload = async () => {
+    const result = await BooksAPI.getAll();
+    this.setState({
+      books: {
+        collection: [...result]
+      }
     });
   }
 

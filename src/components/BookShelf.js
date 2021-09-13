@@ -1,18 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BookShelfBooks from "./BookShelfBooks";
 
-export default class BookShelf extends Component {
-    render() {
-        const {name, books, filter, onBookUpdate} = this.props;
+export default function BookShelf(props) {
+    const {name, books, filter, onBookUpdate} = props;
 
-        return (
-            <div className="bookshelf">
-                <h2 className="bookshelf-title">{name}</h2>
-                <BookShelfBooks books={books.filter(b => b.shelf === filter)} onBookUpdate={onBookUpdate}/>
-            </div>
-        );
-    }
+    return (
+        <div className="bookshelf">
+            <h2 className="bookshelf-title">{name}</h2>
+            <BookShelfBooks books={books.filter(b => b.shelf === filter)} onBookUpdate={onBookUpdate}/>
+        </div>
+    );
 }
 
 BookShelf.propTypes = {

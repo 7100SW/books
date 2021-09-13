@@ -30,8 +30,8 @@ export default class BookComponent extends Component {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.coverUrl})` }}></div>
                     <ShelfChangerComponent onChange={this.onChangeShelf} value={book.shelf}/>
                 </div>
-                <div className="book-title">{book.name}</div>
-                <div className="book-authors">{book.authors}</div>
+                <div className="book-title">{book.title}</div>
+                <div className="book-authors">{book.authors && book.authors.join(', ')}</div>
             </div>
         );
     }
@@ -42,7 +42,10 @@ BookComponent.propTypes = {
         id: PropTypes.string,
         name: PropTypes.string,
         authors: PropTypes.arrayOf(PropTypes.string),
-        shelf: PropTypes.string
+        shelf: PropTypes.string,
+        imagesLinks: PropTypes.shape({
+            thumbnail: PropTypes.string
+        })
     }),
     onBookUpdate: PropTypes.func
 };

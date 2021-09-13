@@ -11,7 +11,7 @@ export default class BookShelfBooks extends Component {
                 <ol className="books-grid">
                     {
                     books.map(book => {
-                        const url = book.imageLinks ? book.imageLinks.smallThumbnail : '';
+                        const url = book?.imageLinks?.smallThumbnail ?? '';
 
                         return (
                             <li key={book.id}>
