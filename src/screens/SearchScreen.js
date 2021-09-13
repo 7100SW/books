@@ -14,7 +14,6 @@ export default class SearchScreen extends Component {
         if (e.target.value && e.target.value.trim() !== '') {
             BooksAPI.search(e.target.value).then(result => {
                 if (result && result.length > 0) {
-
                     const merged = result.map(r => {
                         const existing = this.props.books.find(b => b.id === r.id);
                         if (existing) {
@@ -36,6 +35,11 @@ export default class SearchScreen extends Component {
                         books: null
                     });
                 }
+            });
+        }
+        else {
+            this.setState({
+                books: null
             });
         }
     }
